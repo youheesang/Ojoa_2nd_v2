@@ -1,0 +1,253 @@
+/* ============================== */
+/* QnaThumbNail */
+.qna_path {
+    width: 1240px;
+    padding: 0;
+    display: flex;
+    color: #333;
+    font-size: 12px;
+    margin: 20px auto;
+    height: 30px;
+    justify-content: flex-end;
+}
+
+.qna_path span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    white-space: nowrap;
+    text-indent: 100%;
+    display: none;
+}
+
+.qna_path li {
+    float: left;
+    padding-left: 12px;
+    color: #333;
+    margin: 0;
+}
+
+.qna_path li a {
+    color: #333;
+}
+
+.qna_title {
+
+    color: #333;
+}
+
+.qna_title h2 {
+    height: 60px;
+    text-align: center;
+    line-height: 90px;
+    font-size: 30px;
+    letter-spacing: 3px;
+    padding-top: 70px;
+    padding-bottom: 0px;
+}
+
+.qna_title .txt_01 {
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: -0.2px;
+    font-weight: 300;
+    padding-top: 5px;
+    padding-bottom: 120px;
+}
+
+
+/* ============================== */
+/* QnaFilter */
+.qna_filter_container {
+    position: relative;
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.qna_board_sort {
+    padding: 0 0 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.seclet {
+    height: 24px;
+    border: 1px solid #e5e5e5;
+}
+
+.qna_board_find fieldset {
+    display: block;
+    color: #2e2e2e;
+    flex-wrap: wrap;
+}
+
+.qna_board_find legend {
+    position: absolute;
+    text-indent: -9999em;
+}
+
+.qna_filter_container select,
+.qna_board_find select {
+    height: 24px;
+    border: 1px solid #d5d5d5;
+    width: 100px;
+}
+
+.qna_board_find input[type=text] {
+    margin-left: 20px;
+    height: 24px;
+    width: 200px;
+    border: 1px solid #d5d5d5;
+    color: #353535;
+}
+
+.qna_board_find_btn {
+    margin-left: 1px;
+    width: 50px;
+    display: inline-block;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    vertical-align: top;
+    color: #fff;
+    background-color: #84868b;
+    text-align: center;
+    line-height: 24px;
+}
+
+/* ============================== */
+/*TitleList & ListItem */
+.qna_ListItem_container,
+.qna_TitleList_container {
+    position: relative;
+    width: 1240px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.qna_board_name {
+    background-color: #e9e9e9;
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+/* ============================== */
+/*TitleList*/
+
+
+.qna_Tboard_st {
+    font-weight: bold;
+}
+
+
+.qna_board_st2 {
+    width: 50px;
+    display: inline-block;
+    /* flex-direction: row; */
+}
+
+.qna_board_st2 {
+    /* width: 80px; */
+    /* padding: 10px 10px 10px 8px; */
+    /* text-align: initial; */
+    justify-content: space-between;
+}
+
+.qna_board_st1,
+.qna_board_st3,
+.qna_board_st5,
+.qna_board_st6 {
+    text-align: center;
+}
+
+
+.qna_board_st4 a,
+.qna_borad_st4 span {
+    color: #000;
+}
+
+.qna_board_st4 .qna_board_st img {
+    margin: 5px;
+    width: 18px;
+    height: 13px;
+}
+
+/* ============================== */
+/*ListItem*/
+.qna_ListItem_container {
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+.qna_Lboard_st {
+
+    border: 1px solid #f3f3f3;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 12px;
+}
+
+
+
+.qna_board_st2 img {
+    width: 50px;
+    vertical-align: middle;
+    align-content: left;
+}
+
+/* ============================== */
+/* QnaWriteBtn */
+
+
+.qna_write_btn {
+    width: 1240px;
+
+    display: inline-flex;
+    justify-content: flex-end;
+    position: absolute;
+
+}
+
+.qna_write_btn a {
+    background-color: #a3a1a1;
+    color: white;
+    display: inline-flex;
+    font-size: 12px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    font-weight: 600;
+    transition: 0.25s;
+
+    cursor: pointer;
+}
+
+/* ============================== */
+/* QnaModal */
+
+table .qna_table2 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    margin: 20px 10px;
+}
+
+table .qna_table2 tr {
+    width: 50px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+table .qna_table2 td {
+    width: 100px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
