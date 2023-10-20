@@ -11,6 +11,8 @@ function Header() {
 
     const generateToLink = (category) => {
         const CATEGORY_PATHS = {
+            'New': '/ProductList/New',
+            'Best': '/ProductList/Best',
             '침대': '/ProductList/Bed',
             '소파': '/ProductList/Sofa',
             '책장': '/ProductList/Bookshelf',
@@ -26,15 +28,15 @@ function Header() {
     return (
         <>
             <header className='header'>
-                <Link to="/qna" className="mtalk"><img src="/images/mtalk_icon.png" alt="mtalk" /></Link>
-                <Link to="/qna" className="mchannel"><img src="/images/mchannel_icon.png" alt="mchannel" /></Link>
+                {/* <Link to="/qna" className="mtalk"><img src="/images/mtalk_icon.png" alt="mtalk" /></Link> */}
+                <a id="chat-channel-button" href="javascript:chatChannel()" className="mchannel"><img src="/images/mchannel_icon.png" alt="카카오톡 채널 채팅하기 버튼" /></a>
                 <div id="mheader">
                     {/*---------------------------------------------------------*/}
                     {/* header */}
                     <div>
                         {/* 상단 로고 */}
                         <div>
-                            <Link to="/"><img className="logo" src="/images/ojoa_logo_b.png" alt="logo" height="100px" /></Link>
+                            <Link to="/"><img className="logo" src="/images/ojoa_logo_b.png" alt="logo"/></Link>
                         </div>
                         <div className="search">
                             <Modal />
@@ -58,8 +60,9 @@ function Header() {
             {/* category_navi_drop_bar */}
             <div className="sticky" id="category_nav">
                 <ul>
-                    <li><Link to="#" onClick={handleLinkClick}>BEST</Link></li>
-                    <li><Link to="#" onClick={handleLinkClick}>NEW</Link></li>
+                    <li><Link to={generateToLink("Best")}>BEST</Link></li>
+                    <li><Link to={generateToLink("New")}>NEW</Link></li>
+                    {/* <li><Link to="/ProductList/NewList">NEW</Link></li> */}
                     <li><Link to='/ProductList/Bed'>침대</Link>
                         <ul>
                             <li><Link to="#" onClick={handleLinkClick}>싱글</Link></li>

@@ -1,99 +1,124 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom"
 import './ModalBasic.css';
 import mockList from '../../data/ItemsData';
 
+// ** header search 모달 내용을 담당하는 컴포넌트 ** //
+
 function ModalBasic({ setModalOpen }) {
 
-    const [inputValue, setInputValue] = useState('');
-    const [searchResults, setSearchResults] = useState([]); // 검색 결과 상태
+    useEffect(() => {
+        if (setModalOpen) {
+            document.body.style.overflow = 'hidden'; // 모달이 열릴 때 스크롤 막음.
+        } else {
+            document.body.style.overflow = ''; // 모달이 닫힐 때 스크롤 허용.
+        }
 
-    // 모달 끄기 (X버튼 onClick 이벤트 핸들러)
+        return () => {
+            document.body.style.overflow = ''; // 컴포넌트 언마운트 시 스크롤 허용.
+        };
+    }, [setModalOpen]);
+
+    const [inputValue, setInputValue] = useState(''); // 검색 입력 값.
+    const [searchResults, setSearchResults] = useState([]); // 검색 결과.
+
     const closeModal = () => {
         setModalOpen(false);
-    };
+    }; // setModalOpen 을 사용해 모달 닫기. (X버튼 onClick 이벤트 핸들러)
 
     const handleInputChange = (event) => {
-        setInputValue(event.target.value); // 입력한 텍스트 상태 업데이트
+        setInputValue(event.target.value);
+    }; // 입력한 텍스트의 상태 업데이트 함수.
+
+    const handleSearchFormSubmit = (event) => {
+        event.preventDefault(); // 폼태그의 기본 동작(전송)을 막음 => 모달창 닫힘(새로고침 현상)을 차단.
+        handleSearchButtonClick(); // Enter 키를 누르면 페이지 새로고침 되지않고, 검색 버튼 클릭과 동일한 로직 실행.
     };
 
-    // // 모달 외부 클릭시 끄기 처리
-    // // Modal 창을 useRef로 취득
-    // const modalRef = useRef(null);
-
-    // useEffect(() => {
-    //     // 이벤트 핸들러 함수
-    //     const handleClickOutside = (event) => {
-    //         // mousedown 이벤트가 발생한 영역이 모달창이 아닐 때, 모달창 제거 처리
-    //         if (modalRef.current && !modalRef.current.contains(event.target)) {
-    //             closeModal();
-    //         }
-    //     };
-
-    //     // 이벤트 핸들러 등록
-    //     document.addEventListener('mousedown', handleClickOutside);
-
-    //     return () => {
-    //         // 이벤트 핸들러 해제
-    //         document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    // }, []);
-
-    // useEffect(() => {
-    //     // inputValue가 변경될 때마다 alert 메시지를 띄움
-    //     if (inputValue !== '') {
-    //         // alert('\n [상품 검색] 기능은 현재 준비중 입니다.\n\n Text 입력도 허용하지 않습니다.');
-    //     }
-    // }, [inputValue]);
-
-    // const handleModalClick = (event) => {
-    //     event.stopPropagation();
-    // };
-
     const handleSearchButtonClick = () => {
-        // alert('\n [상품 검색] 기능은 현재 준비중 입니다.');
         if (inputValue !== '') {
-            // mockList에서 상품 이름으로 검색하여 결과를 필터링
+            // mockList에서 상품 이름으로 검색하여 결과를 필터링.
             const searchResults = mockList.filter((product) =>
                 product.productName.includes(inputValue)
-            );
-            setSearchResults(searchResults); // 검색 결과 상태 업데이트
+            ); // 검색 버튼 클릭 시, 입력된 값과 일치하는 상품을 mockList 에서 검색.
+            setSearchResults(searchResults); // searchResults 상태 업데이트.
         }
     };
 
-    // const handleSearchResults = (results) => {
-    //     setSearchResults(results); // 검색 결과 상태 업데이트
-    // };
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } // 천 단위 쉼표로 변환하는 함수.
+
+    const closeModalAndNavigate = () => {
+        setModalOpen(false); // 모달을 닫고 페이지 이동을 위한 함수.
+    };
+
+    const handleResetClick = () => { // inpt 창 텍스트 리셋.
+        setInputValue('');
+    };
 
     return (
-        <div className="Modal_container">
-            <div className="Modal_container2">
-                <img onClick={closeModal} className="madal_close_rotate" src="./images/search_X.png" alt="search_x" />
-                <form id="search-form-view">
-                    <input
-                        name="keyword"
-                        className="inputTypeText"
-                        value={inputValue}
-                        type="text"
-                        onChange={handleInputChange}
-                        autoFocus
-                    />
+        <div className='Modal_wrap'>
+            <div className="Modal_container">
+                <div className="Modal_container2">
                     <img
-                        src="./images/search_icon.png"
-                        alt="검색"
-                        className="search_btn"
-                        onClick={handleSearchButtonClick}
+                        onClick={closeModal}
+                        className="madal_close_rotate"
+                        src="/images/search_X.png"
+                        alt="search_x"
                     />
-                </form>
-            </div>
-            {/* 검색 결과 출력 */}
-            <div className="search-container">
-                <div className="search-results">
-                {searchResults.map((product) => (
-                    <div key={product.id} className="search-result-item">
-                        <h3>{product.productName}</h3>
-                        <p>{product.productPriceFormatted}원</p>
+                    <form
+                        id="search-form-view"
+                        onSubmit={handleSearchFormSubmit}>
+                        <input
+                            name="keyword"
+                            className="inputTypeText"
+                            value={inputValue}
+                            type="text"
+                            onChange={handleInputChange}
+                            placeholder="상품을 검색 하세요."
+                            autoFocus
+                        />
+                        {inputValue && (
+                            <img
+                                type="reset"
+                                className="btn-reset"
+                                src="/images/btn_reset.png"
+                                alt="reset"
+                                onClick={handleResetClick}>
+                            </img>
+                        )}
+                        <img
+                            src="/images/search_icon.png"
+                            alt="검색"
+                            className="search_btn"
+                            onClick={handleSearchButtonClick}
+                        />
+                    </form>
+                </div>
+                {/* 검색 결과 출력 */}
+                <div className="search-container">
+                    <div className="search-results">
+                        {searchResults.length === 0 ? ( // 검색 결과가 없을 때
+                            <h4>검색 상품이 존재하지 않습니다.</h4>
+                        ) : (
+                            searchResults.map((product) => (
+                                <Link
+                                    to={`/ProductDetail/${product.id}`}
+                                    key={product.id}
+                                    className="search-result-item"
+                                    onClick={closeModalAndNavigate} // 클릭 시 모달을 닫는 함수 호출
+                                >
+                                    <img
+                                        src={`/thumbs/${product.imgNo}_1.jpg`}
+                                        alt={product.productName}
+                                    />
+                                    <h3>&nbsp;&nbsp;{product.productName}</h3>
+                                    <p>&nbsp;&nbsp;&nbsp;{numberWithCommas(product.productPriceFormatted)}원</p>
+                                </Link>
+                            ))
+                        )}
                     </div>
-                ))}
                 </div>
             </div>
         </div>

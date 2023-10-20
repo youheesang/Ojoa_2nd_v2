@@ -82,9 +82,10 @@
 
 .CartHeader .favor_btn {
   height: 25px;
-  padding: 3px;
+  padding: 4px;
   border-radius: 5%;
-  border: solid 1px;
+  border: solid 2px gray;
+  line-height: 14px;
 }
 
 .CartHeader .favor_btn:hover {
@@ -97,8 +98,8 @@
 
 
 .CartList .list_detail input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border: 2px solid black;
 }
 
@@ -112,9 +113,6 @@
   margin: 0 auto;
   margin-top: 30px;
   border-collapse: collapse;
-  /* display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  place-items: center;*/
 }
 
 
@@ -195,7 +193,6 @@ thead>tr>th:first-child {
   position: relative;
   width: 90px;
   height: 30px;
-  border: 2px solid silver;
   border-radius: 5px;
   align-items: center;
   margin: auto;
@@ -203,29 +200,29 @@ thead>tr>th:first-child {
 
 .CartList .cart_product_count .minus {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 23px;
+  height: 23px;
   top: 50%;
-  left: 10px;
+  left: 0px;
   transform: translateY(-50%);
 }
 
 .CartList .cart_product_count .plus {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 20px;
+  height: 20px;
   top: 50%;
-  right: 10px;
+  right: 2px;
   transform: translateY(-50%);
 }
 
 .CartList .cart_product_count .count {
   position: absolute;
   width: 38px;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #c4c4c4;
+  border: 1px solid black;
   border-top: none;
   border-bottom: none;
 }

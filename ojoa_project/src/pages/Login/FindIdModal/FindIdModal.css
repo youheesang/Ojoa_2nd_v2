@@ -1,36 +1,47 @@
 /* ============================== */
 /* 모달창 디자인 */
-#QnaModal_Background {
+#login_findIdModal {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000000;
+}
+
+#login_findIdModal>.login_bg {
+    position: absolute;
+    opacity: 0.2;
+    background-color: #000000;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#login_findIdModal>.login_container {
+    position: absolute;
     top: 50%;
     left: 50%;
     width: 900px;
-    height: 650px;
+    height: 500px;
     background-color: white;
     transform: translate(-50%, -50%);
     display: flex;
     /* align-items: center; */
     justify-content: center;
-    z-index: 5;
+    z-index: 1;
     box-shadow: 2px 4px 5px 0px gray;
-
 }
 
-.QnaModal_container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 800px;
-    height: 700px;
-    display: inline-block;
-    /* z-index: 999; */
-
+#login_findIdModal>.login_container>.login_inner {
+    width: 720px;
 }
 
 /* ============================== */
 /* 모달창 내부 X버튼 */
-
-#QnaModal_Background .qnaModal_btn_close {
+#login_findIdModal .login_btn_close {
     position: absolute;
     right: 30px;
     top: 30px;
@@ -39,7 +50,7 @@
     z-index: 2222;
 }
 
-#QnaModal_Background .qnaModal_btn_close:hover {
+#login_findIdModal .login_btn_close:hover {
     -ms-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -49,14 +60,14 @@
 
 /* ============================== */
 /* 글쓰기 */
-.qna_writeArea {
+#login_findIdModal .login_writeArea {
     width: 720px;
     line-height: 100px;
     text-align: center;
 }
 
-.qna_write_info,
-.qna_board_table {
+#login_findIdModal .login_write_info,
+#login_findIdModal .login_board_table {
     width: 100%;
     position: relative;
     margin: 10px 0 0;
@@ -66,17 +77,17 @@
     border-collapse: collapse;
 }
 
-.qna_board_table {
+#login_findIdModal .login_board_table {
     border: 1px solid #e9e9e9;
 }
 
-.qna_board_table tbody {
+#login_findIdModal .login_board_table tbody {
     display: table-row-group;
     vertical-align: middle;
     border-color: inherit;
 }
 
-.qna_board_table tr {
+#login_findIdModal .login_board_table tr {
     display: table-row;
     vertical-align: inherit;
     color: #fff;
@@ -86,7 +97,7 @@
 
 }
 
-.qna_board_table th {
+#login_findIdModal .login_board_table th {
     border-bottom: 1px solid #e9e9e9;
     padding: auto 0 10px 18px;
     border: 1px solid #dfdfdf;
@@ -99,7 +110,7 @@
 
 }
 
-.qna_board_table td {
+#login_findIdModal .login_board_table td {
     padding: 8px 10px 7px;
     border-top: 1px solid #dfdfdf;
     color: #353535;
@@ -109,7 +120,8 @@
 
 }
 
-.qna_write_info input[type="text"] {
+#login_findIdModal .login_write_info input[type="text"],
+#login_findIdModal .login_write_info input[type="number"] {
     height: 18px;
     line-height: 20px;
     padding: 2px 4px;
@@ -118,49 +130,34 @@
     outline: none;
 }
 
-#qna_bContent {
-    height: 250px;
-    background: transparent;
-    color: #000000;
-    position: relative;
-    z-index: 2;
-    margin: 0px;
-    overflow: hidden;
-    min-height: 20px;
-}
-
 
 
 /* ============================== */
-/* 카테고리부분 */
-#board_category1 {
-    margin-right: 20px;
+/* 완료 버튼*/
+#login_findIdModal .login_btns {
+    text-align: right;
 }
 
-
-#board_category2 .qna_write_filter option {
-    font-weight: normal;
-    display: block;
-    min-height: 1.2em;
-    padding: 0px 2px 1px;
-}
-
-
-/* ============================== */
-/* 등록완료 버튼*/
-.qna_btnSet,
-.qna_btnSet_cancle {
+#login_findIdModal .login_btnSet,
+#login_findIdModal .login_btnSet_cancel {
     display: inline-flex;
     margin-top: 20px;
     justify-content: center;
     align-items: center;
 }
 
-.qna_writesubmit_btn,
-.qna_writeback_btn {
+#login_findIdModal .login_td_btn {
+    width: 120px;
+    text-align: right;
+}
+
+#login_findIdModal .login_send_btn,
+#login_findIdModal .login_check_btn,
+#login_findIdModal .login_submit_btn,
+#login_findIdModal .login_back_btn {
 
     display: inline-flex;
-    background-color: #a3a1a1;
+    background-color: #555555;
     color: white;
     font-size: 12px;
     padding: 10px 15px;
@@ -170,4 +167,12 @@
     transition: 0.25s;
     margin: 0 5px;
     cursor: pointer;
+}
+
+#login_findIdModal .login_back_btn {
+    background-color: #a3a1a1;
+}
+
+#login_findIdModal .login_submit_btn:disabled {
+    opacity: 0.3;
 }

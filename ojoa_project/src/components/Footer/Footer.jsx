@@ -68,7 +68,7 @@ function Footer() {
                         <div className="ft_comm">
                             <ul>
                                 <li><b>Community</b></li>
-                                <li><Link to="#" onClick={handleLinkClick}>NOTICE</Link></li>
+                                <li><Link to="./qna">NOTICE</Link></li>
                                 <li><Link to="#" onClick={handleLinkClick}>REVIEW</Link></li>
                                 <li><Link to="./qna">QNA</Link></li>
                                 <li><Link to="./store">OFFLINE STORE</Link></li>
@@ -80,7 +80,7 @@ function Footer() {
                                 <li><b>Shopping Quick</b></li>
                                 <li><Link to="./MyPage">MY PAGE</Link></li>
                                 <li><Link to="./order">ORDER</Link></li>
-                                <li><Link to="#" onClick={handleLinkClick}>WISH LIST</Link></li>
+                                <li><Link to="./cart">WISH LIST</Link></li>
                             </ul>
                         </div>
                         <div className="ft_sns">

@@ -130,6 +130,10 @@
     background-color: transparent;
 }
 
+.main_score {
+    cursor: pointer;
+}
+
 .star_image,
 .main_score .title,
 .sf_write .title {

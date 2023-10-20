@@ -19,7 +19,7 @@ const FlipRoom = () => {
                         </figcaption>
                     </figure>
                     <figure className="back">
-                        <NavLink to="/ProductList">
+                        <NavLink to="/productList/Sofa/">
                         <img className="colimg" src={"./images/l_bg.png"} alt="마우스 내리면 to Left" />
                         <figcaption>
                             <h3>지금 보러가기 &rarr;</h3>
@@ -40,7 +40,7 @@ const FlipRoom = () => {
                         </figcaption>
                     </figure>
                     <figure className="back">
-                        <NavLink to="/ProductList">
+                        <NavLink to="/productList/Bed/">
                         <img className="colimg" src={"./images/b_bg.png"} alt="마우스 내리면 to Left" />
                         <figcaption>
                         <h3>지금 보러가기 &rarr;</h3>
@@ -61,7 +61,7 @@ const FlipRoom = () => {
                         </figcaption>
                     </figure>
                     <figure className="back">
-                        <NavLink to="/ProductList">
+                        <NavLink to="/productList/Chair/">
                         <img className="colimg" src={"./images/k_bg.png"} alt="마우스 내리면 to Left" />
                         <figcaption>
                             <h3>지금 보러가기 &rarr;</h3>

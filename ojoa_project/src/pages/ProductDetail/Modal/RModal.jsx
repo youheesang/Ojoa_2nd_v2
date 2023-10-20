@@ -1,6 +1,6 @@
 import React from "react";
 import "./RModal.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useParams } from "react-router-dom"
 import mockList from '../../../data/ItemsData'
 
@@ -68,6 +68,27 @@ function RModal({ closeModal, onReviewTextChange }) {
 
     const handleLocalReviewTextChange = (text) => {
         setLocalReviewText(text);
+    };
+
+
+    // 파일업로드
+    const [selectedFile, setSelectedFile] = useState(null);
+    const fileInputRef = useRef(null);
+
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
+
+    const handleUploadButtonClick = () => {
+        // 클릭 시 파일 입력 요소 클릭
+        fileInputRef.current.click();
+    };
+
+    const handleUpload = () => {
+        if (selectedFile) {
+            // 여기서 파일을 업로드하는 로직을 구현
+            console.log("Uploading file:", selectedFile);
+        }
     };
 
 
@@ -158,8 +179,21 @@ function RModal({ closeModal, onReviewTextChange }) {
                                 <button className="btn close_content" type="button" onClick={closeMediaOptions}>
                                     <img src="https://cdn.snapfit.co.kr/review/images/icons/cancel_image_X.png" />
                                 </button>
-                                <button className="btn upload_content content_photo" type="button">사진 첨부</button>
-                                <button className="btn upload_content content_media" type="button">동영상 첨부</button>
+                                <input
+                                    type="file"
+                                    ref={fileInputRef}
+                                    style={{ display: "none" }} // 숨김 처리
+                                    onChange={handleFileChange}
+                                />
+                                <button
+                                    className="btn upload_content content_photo"
+                                    type="button"
+                                    onClick={handleUploadButtonClick}
+                                >
+                                    사진 첨부
+                                </button>
+                                {/* <button className="btn upload_content content_photo" type="button" onChange={handleFileChange} onClick={handleUpload}>사진 첨부</button> */}
+                                <button className="btn upload_content content_media" type="button" onClick={handleUploadButtonClick}>동영상 첨부</button>
                             </div>
                         </div>
 

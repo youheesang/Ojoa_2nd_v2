@@ -13,8 +13,8 @@ const Info = () => {
     };
 
     // Ref 객체 추가
-    const idInputRef = useRef(null);
-    const idckbtnInputRef = useRef(null);
+    const idInputRef = useRef(null); // 아이디 입력 필드의 Ref 객체
+    const idckbtnInputRef = useRef(null); // 아이디 중복확인 버튼의 Ref 객체
     const passwordInputRef = useRef(null);
     const pwdckInputRef = useRef(null);
     const postcodeInputRef = useRef(null);
@@ -29,7 +29,7 @@ const Info = () => {
 
 
     // 이름
-    const [name, setName] = useState("");
+    const [name, setName] = useState(""); // 이름 상태와 변경 함수
     const [nameError, setNameError] = useState(""); // 이름 에러 메세지
 
     const handleNameChange = (event) => {
@@ -48,7 +48,7 @@ const Info = () => {
 
 
     // 아이디 -> 중복확인은 아니고 그냥 아이디값 입력잘했는지
-    const [id, setId] = useState("");
+    const [id, setId] = useState("");  // 아이디 상태와 변경 함수
     const [idError, setIdError] = useState(""); // 이름 에러 메세지
 
     const handleidChange = (event) => {
@@ -58,7 +58,7 @@ const Info = () => {
 
         // 아이디 입력시 5자~15 입력했는지
         if (newId.length < 5 || newId.length > 15) {
-            setIdError("비밀번호는 5~15자 이내이며, 최소 1개의 특수문자를 포함해야 합니다.");
+            setIdError("아이디는 5~15자 이내이여야 합니다.");
         } else {
             setIdError("");
         }
@@ -68,7 +68,7 @@ const Info = () => {
 
 
     // 비밀번호
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(""); // 비밀번호 상태와 변경 함수
     const [passwordError, setPasswordError] = useState(""); // 비밀번호 오류메세지
 
     const handlePasswordChange = (event) => {
@@ -104,7 +104,25 @@ const Info = () => {
     };
 
 
-    // 취소 버튼 클릭 시 입력 필드 초기화
+    // 우편번호 확인
+    const [postcode, setPostcode] = useState("");
+    const [postcodeError, setPostcodeError] = useState("");
+    const handlePostcodeChange = (event) => {
+        const newPostcode = event.target.value;
+
+        // 우편번호 입력값이 숫자와 "-"만으로 구성되어 있는지 확인
+        if (!/^[0-9-]*$/.test(newPostcode)) {
+            setPostcodeError("우편번호는 숫자와 기호 '-'만 가능합니다.");
+        }else {
+            // 숫자와 "-"만으로 구성된 경우에만 우편번호 변경 및 오류 초기화
+            setPostcode(newPostcode);
+            setPostcodeError("");
+        }
+    };
+
+    
+
+    // 취소 버튼 클릭 시 -> 입력된거 초기화
     const handleCancelClick = () => {
         setName("");
         setId("");
@@ -227,28 +245,38 @@ const Info = () => {
                         </th>
                         <td>
                             <div className="input_address">
-                                <input type="number"
+                                <input type="text"
                                     name="post_code"
                                     maxlength="7"
                                     placeholder="우편번호입력"
                                     id="address"
-                                    onChange={handlePwdckChange}
+                                    value={postcode}
+                                    onChange={handlePostcodeChange}
                                     ref={postcodeInputRef} // Ref 객체 연결
-                                    onKeyDown={(e) => handleKeyDown(e, postbtnInputRef)} />
-
+                                    onKeyDown={(e) => handleKeyDown(e, postbtnInputRef)}
+                                    required/>
 
                                 <form action="https://www.epost.kr/search.RetrieveIntegrationNewZipCdList.comm"
                                     target="_blank">
-                                    <input className="inside_btn" 
-                                    type="submit" 
-                                    name="find_postcode"
-                                    value="우편번호찾기"
-                                    ref={postbtnInputRef} // Ref 객체 연결
-                                    onKeyDown={(e) => handleKeyDown(e, addressInputRef)} /></form>
+                                
+                                    <input
+                                        className="inside_btn"
+                                        type="submit"
+                                        name="find_postcode"
+                                        value="우편번호찾기"
+                                        ref={postbtnInputRef}
+                                        onKeyDown={(e) => handleKeyDown(e, addressInputRef)}/>
+                                        {postcodeError && (
+                                            <span className="input_error">{postcodeError}</span>
+                                        )}
+                                    
+                                    
+                                </form>
                             </div>
                             <div>
                                 <input type="text"
                                     name="address"
+                                    // value={address}
                                     ref={addressInputRef} // Ref 객체 연결
                                     onKeyDown={(e) => handleKeyDown(e, addressdetailInputRef)}
                                     required />
@@ -292,7 +320,7 @@ const Info = () => {
                                     size="1"
                                     ref={cell2InputRef} // Ref 객체 연결
                                     onKeyDown={(e) => handleKeyDown(e, emailidInputRef)}
-                                    require />
+                                    required />
                             </div>
                         </td>
                     </tr>

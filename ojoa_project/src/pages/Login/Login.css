@@ -9,7 +9,7 @@
     margin: 20px auto;
     height: 30px;
     line-height: 30px;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .login_path span {
@@ -212,8 +212,10 @@
     padding: 0 0 0 5px;
 }
 
-.login_fieldset ul li a {
+.login_fieldset ul li button {
     color: #666;
+    background: none;
+    cursor:pointer;
 }
 
 /* ----------네이버,페이스북,카카오톡 로그인---------- */

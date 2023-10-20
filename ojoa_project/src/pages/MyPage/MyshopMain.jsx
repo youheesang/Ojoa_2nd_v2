@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 const MyshopMain = () => {
 
+    const handleLinkClick = () => {
+        alert('해당 페이지는 현재 준비중 입니다.');
+    };
+
     return (
         <div className="container">
             <div className="myshopMain">
@@ -13,7 +17,7 @@ const MyshopMain = () => {
                         <p>고객님께서 주문하신 상품의<br />주문내역을 확인하실 수 있습니다.</p>
                     </div>
                 </Link>
-                <Link to="#">
+                <Link to="#" onClick={handleLinkClick} >
                     <div className="shopMain">
                         <h3><img src="../images/img_profile.png" alt="회원정보" /><br /><strong>Profile</strong><span>회원 정보</span>
                         </h3>
@@ -21,7 +25,7 @@ const MyshopMain = () => {
                         <p>회원이신 고객님의 개인정보를<br />관리하는 공간입니다.</p>
                     </div>
                 </Link>
-                <Link to="#">
+                <Link to="../cart">
                     <div className="shopMain">
                         <h3><img src="../images/img_wishlist.png" alt="관심상품" /><br /><strong>Wishlist</strong><span>관심 상품</span>
                         </h3>
@@ -37,7 +41,7 @@ const MyshopMain = () => {
                         <p>적립금은 상품 구매 시<br />사용하실 수 있습니다.</p>
                     </div>
                 </Link>
-                <Link to="#">
+                <Link to="#" onClick={handleLinkClick} >
                     <div className="shopMain">
                         <h3><img src="../images/img_deposits.png" alt="예치금" /><br /><strong>Deposits</strong><span>예치금</span>
                         </h3>
@@ -52,7 +56,7 @@ const MyshopMain = () => {
                         <p>고객님께서 작성하신 게시물을<br />관리하는 공간입니다.</p>
                     </div>
                 </Link>
-                <Link to="#">
+                <Link to="#" onClick={handleLinkClick} >
                     <div className="shopMain">
                         <h3><img src="../images/img_address.png" alt="배송지 관리" /><br /><strong>Address</strong><span>배송 주소록
                             관리</span></h3>

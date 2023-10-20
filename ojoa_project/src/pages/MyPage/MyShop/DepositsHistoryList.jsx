@@ -1,6 +1,7 @@
 import '../MyShop/Deposits.css';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from "../../components/Pagination/Pagination";
 
 class DepositsInfo {
     constructor(title, bank) {  //생성자
@@ -76,14 +77,7 @@ function DepositsHistoryList() {
                                 </div>
                             </div>
                         </div>
-                        <div className="ec-base-paginate"><a className="first"><img src="../../../images/btn_page_first.gif" alt="첫 페이지" /></a>
-                            <a><img src="../../../images/btn_page_prev.gif" alt="이전 페이지" /></a>
-                            <ol>
-                                <li className="record"><p href="" className="this">1</p></li>
-                            </ol>
-                            <a><img src="../../../images/btn_page_next.gif" alt="다음 페이지" /></a>
-                            <a className="last"><img src="../../../images/btn_page_last.gif" alt="마지막 페이지" /></a>
-                        </div>
+                        <Pagination />
                         <div className="ec-base-help "><h3>적립금 안내</h3>
                             <div className="inner">
                                 <ol className="historyinfo"><li className="item1 ">주문으로 발생한 적립금은 배송완료 후 1일 부터 실제 사용 가능한 적립금으로 전환됩니다. 배송완료 시점으로부터 1일 동안은 미가용 적립금으로 분류됩니다. </li>

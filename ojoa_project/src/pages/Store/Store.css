@@ -76,7 +76,7 @@
 }
 
 .stores .storeInfo .add {
-    /* background: url(../../../public/images/map.png) no-repeat 0 center/auto 15px; */
+    background: url(../../../public/images/map.png) no-repeat 0 center/auto 15px;
     text-align: left;
     color: #333;
     font-size: 15px;
@@ -97,7 +97,7 @@
 }
 
 .stores .storeInfo .time {
-    /* background: url(../../../public/images/time.png) no-repeat 0 center/auto 15px; */
+    background: url(../../../public/images/time.png) no-repeat 0 center/auto 15px;
     color: #333;
     font-size: 15px;
     font-weight: bold;
@@ -105,13 +105,15 @@
 }
 
 .stores .storeInfo .tel {
-    /* background: url(../../../public/images/tel.png) no-repeat 0 center/auto 15px; */
+    background: url(../../../public/images/tel.png) no-repeat 0 center/auto 15px;
     color: #333;
     font-size: 15px;
     font-weight: bold;
     margin-top: 7px;
 }
 
-.stores .storeInfo .map {
-    border: 1px solid #333;
-}
+/* .stores .storeInfo div { */
+    /* border: 1px solid #333; */
+    /* width: 550px;
+    height: 400px;
+} */

@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 import QnaWriteBtn from './QnaWriteBtn';
 import React, { useMemo, useCallback, useReducer, useRef, useEffect, useState } from "react";
 import Pagination from "../../components/Pagination/Pagination";
-import QnaData from "../Qna/QnaData";
+
 
 
 
@@ -41,6 +41,7 @@ export const TodoDispatchContext = React.createContext();
 
 //=========================================================
 function Qna() {
+
 
     // ** Local Storage 적용 1
     // => LocalStorage 의 Data 읽어, todo 초기화 하기  
@@ -92,6 +93,102 @@ function Qna() {
     //=========================================================
 
 
+
+
+    // 게시판 필터
+    const [filters, setFilters] = useState({ category: "", date: "", key: "", query: "" });
+
+    const qnaList = [
+        {
+            num: '공지',
+            imgNo: '-',
+            itemInfo: '-',
+            category: '-',
+            title: '리뷰작성 포인트 적립안내',
+            notification: '첫번째 공지 입니다. 아 리액트 빡치네.. 서터레스...',
+            titleIcon: '[16]',
+            writer: 'ojoa',
+            date: '2023.03.23'
+        },
+        {
+            num: '공지',
+            imgNo: '-',
+            itemInfo: '-',
+            category: '-',
+            title: 'ojoa 온라인몰 배송관련 안내',
+            notification: '새로운 공지 입니다. 때려칠까',
+            titleIcon: '[10]',
+            writer: 'ojoa',
+            date: '2023.07.23'
+        },
+        {
+            num: 1,
+            imgNo: 5,
+            itemInfo: '[이끼 의자]',
+            category: '상품문의',
+            title: '물 줘도 되나요?',
+            notification: '제가 살아 있는 생물만 구매하는 주의라서요. 신선 배송 되겠죠? 서울인데 새벽배송 가능하죠?',
+            titleIcon: '[1]',
+            writer: '오원희',
+            date: '2023.08.18'
+        },
+        {
+            num: 2,
+            imgNo: 13,
+            itemInfo: '[철의 왕좌]',
+            category: '상품문의',
+            title: '가격이... 혹시 정품 인가요?',
+            notification: '왕좌의 게임에 나오는 철의 왕좌 같은데요... 정품 인가요? 예전에 중국산을 속아서 산적이 있어서요...',
+            titleIcon: '[1]',
+            writer: '어성은',
+            date: '2023.08.19'
+        }, {
+            num: 3,
+            imgNo: 14,
+            itemInfo: '[희상 의자]',
+            category: '주문/결제',
+            title: '주문하려고 하는데 240개월 할부가 되나요?',
+            notification: '카드사 별로 얼마나 할부되는지 궁금해요.',
+            titleIcon: '[1]',
+            writer: '유희상',
+            date: '2023.08.05'
+        },
+        {
+            num: 4,
+            imgNo: 15,
+            itemInfo: '[원희 의자]',
+            category: '상품문의',
+            title: '손가락은 꺾이나요?',
+            notification: '손가락이 꺾여서 팔받침으로 사용할 수 있는 건가요?',
+            titleIcon: '[1]',
+            writer: '이진기',
+            date: '2023.07.05'
+        },
+        {
+            num: 5,
+            imgNo: 16,
+            itemInfo: '[성은 의자]',
+            category: '배송문의',
+            title: '먹을 수 있나요?',
+            notification: '아무리 봐도 바게트 같은.....? 배송은 언제쯤 가능한가요?',
+            titleIcon: '[1]',
+            writer: '오원희',
+            date: '2023.06.19'
+        },
+        {
+            num: 6,
+            imgNo: 12,
+            itemInfo: '[푸바오 의자]',
+            category: '상품문의',
+            title: '손가락은 꺾이나요?',
+            notification: '손가락이 꺾여서 팔받침으로 사용할 수 있는 건가요?',
+            titleIcon: '[1]',
+            writer: '그린컴',
+            date: '2023.05.18'
+        }
+
+    ]; // qnaList
+
     return (
         <ModalProvider>
             <div className="Qna">
@@ -99,11 +196,12 @@ function Qna() {
                     <TodoDispatchContext.Provider value={memoizedDispatches}>
                         {/* <TodoDispatchContext.Provider value={{onCreate, onUpdate, onDelete}}>  
             => cONTEXT 분리 했어도 최적화 적용 되지 않음  */}
-                        {/* <QnaData /> */}
                         <QnaPage />
-                        <QnaFilter />
-                        <QnaTitleList />
-                        <QnaListItem />
+                        <QnaFilter setFilters={setFilters} />
+                        <table className="qna_ListItem_container">
+                            <QnaTitleList />
+                            <QnaListItem qnaList={qnaList} filters={filters} />
+                        </table>
                         <QnaWriteBtn />
                         <Pagination />
                     </TodoDispatchContext.Provider>

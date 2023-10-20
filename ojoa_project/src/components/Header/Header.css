@@ -15,18 +15,17 @@
 }
 
 .header .navBar {
-    /* width: 1240px; */
     height: 30px;
     margin: auto;
-    /* padding-bottom: 20px; */
-            position: relative;
-                display: flex;
-                justify-content: flex-end;
-                    top: -25px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    top: -25px;
 }
 
 .header .logo {
     float: left;
+    height: 100px;
 }
 
 .header .navBar ul {
@@ -50,17 +49,17 @@
 }
 
 .header .search {
-    top: 50px;
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
-        /* 서치를 헤더 오른쪽 끝에 배치 */
-        align-items: center;
+    top: 60px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    /* 서치를 헤더 오른쪽 끝에 배치 */
+    align-items: center;
 }
 
 .header .search input {
     width: 80%;
-    height: 65px;
+    height: 110px;
     font-size: 20px;
     color: #333;
     border: none;
@@ -85,6 +84,7 @@
     line-height: 40px;
     margin: 0 auto;
     z-index: 1;
+    margin-top: 20px;
 }
 
 #category_nav>ul {
@@ -131,7 +131,7 @@
 } */
 
 /* ======================================================= */
-.header .mtalk img {
+/* .header .mtalk img {
     position: fixed;
     width: 50px;
     height: 50px;
@@ -139,7 +139,7 @@
     bottom: 10%;
     z-index: 1;
     cursor: pointer;
-}
+} */
 
 .header .mchannel img {
     position: fixed;
