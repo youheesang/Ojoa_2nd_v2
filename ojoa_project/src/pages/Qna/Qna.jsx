@@ -189,6 +189,19 @@ function Qna() {
 
     ]; // qnaList
 
+
+    // 한 페이지당 몇 개의 글을 보여줄 것인지 정의
+    const itemsPerPage = 10;
+
+    // 현재 페이지 상태와 페이지 변경 함수
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // 현재 페이지에 해당하는 게시물 선택
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pagedQnaList = qnaList.slice(startIndex, endIndex);
+
+
     return (
         <ModalProvider>
             <div className="Qna">
@@ -200,10 +213,14 @@ function Qna() {
                         <QnaFilter setFilters={setFilters} />
                         <table className="qna_ListItem_container">
                             <QnaTitleList />
-                            <QnaListItem qnaList={qnaList} filters={filters} />
+                            <QnaListItem qnaList={pagedQnaList} filters={filters} />
                         </table>
                         <QnaWriteBtn />
-                        <Pagination />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={Math.ceil(qnaList.length / itemsPerPage)}  // 전체 페이지 수 계산
+                            onPageChange={setCurrentPage}
+                        />
                     </TodoDispatchContext.Provider>
                 </TodoStateContext.Provider>
             </div>
