@@ -19,7 +19,7 @@ const MyshopMain = () => {
                 </Link>
                 <Link to="#" onClick={handleLinkClick} >
                     <div className="shopMain">
-                        <h3><img src="../images/img_profile.png" alt="회원정보" /><br /><strong>Profile</strong><span>회원 정보</span>
+                        <h3><img src="../images/img_profile.png" alt="회원정보" /><br /><strong>Profile</strong><span>회원 정보 및 수정</span>
                         </h3>
                         <br />
                         <p>회원이신 고객님의 개인정보를<br />관리하는 공간입니다.</p>
